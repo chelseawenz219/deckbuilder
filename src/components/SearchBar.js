@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
+import { Link } from 'react-router-dom'
+
 import {
   fetchCards,
   fetchTypes
 } from '../api';
 
 import './SearchBar.css';
-
-//searchBar: takes in setResults
-//based on two search fields: name and text.
-//I want to add categories.
 
 const SearchBar = ({ setResults }) => {
 	//set name and text "states":
@@ -18,7 +16,8 @@ const SearchBar = ({ setResults }) => {
 	//setting a state for category dropdown menu:
 	const [types, setType] = useState('');
 	const [allTypes, setAllTypes] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isDropdownLoading, setIsDropDownLoading] = useState(false);
+	const [areCardsLoading, setAreCardsLoading] = useState(false);
 	// console.log("allTypes", allTypes);
 	//updating name state:
 	//(event handler);
@@ -36,10 +35,14 @@ const SearchBar = ({ setResults }) => {
 		console.log("etv", event.target.value);
 	}
 
-	useEffect(async ()=>{
-		setIsLoading(true);
-		setAllTypes(await fetchTypes());
-		setIsLoading(false);
+	useEffect(()=>{
+		setIsDropDownLoading(true);
+		
+		fetchTypes().then((resp) => {
+			setAllTypes(resp)
+
+			setIsDropDownLoading(false)
+		})
 	}, []);
 
 	console.log("types", allTypes);
@@ -48,6 +51,7 @@ const SearchBar = ({ setResults }) => {
   async function handleSubmit(event) {
 	 //prevent default, as you would in any form submission.
 	event.preventDefault();
+	setAreCardsLoading(true)
 	//fetch cards:
 	const cards = await fetchCards({
 		name,
@@ -58,13 +62,18 @@ const SearchBar = ({ setResults }) => {
 	console.log("cards", cards);
 
 	//update array(state) to contain cards(array);
-    setResults(cards);
+	setResults(cards);
+	setAreCardsLoading(false)
+  }
+
+  if (areCardsLoading) {
+	  return <img id="loadingImg" src="https://media.giphy.com/media/7NOZThmc5NOrKSwkxl/giphy.gif" />
   }
 
   return (
     <div id="search">
-      <h3>Look up cards here...</h3>
       <form onSubmit={ handleSubmit } >
+	  <h3>Look up cards here...</h3>
 		<input 
 		  className="searchBar"
           type="text" 
@@ -78,7 +87,7 @@ const SearchBar = ({ setResults }) => {
           value={ text }
           onChange={ handleTextChange } />
 		  	{
-		  isLoading ? <select id="dropDown">
+		  isDropdownLoading ? <select id="dropDown">
 			  <option value="" disabled selected hidden>Select A Type...</option>
 					  </select>
 						   : <select id="dropDown" onChange={ handleTypeChange }>
@@ -92,6 +101,8 @@ const SearchBar = ({ setResults }) => {
 			}
         <button id="button" type="submit" >Search</button>
       </form>
+
+	  <Link id="deckbutton" to="/deck">My Deck </Link>
     </div>
   );
 }
