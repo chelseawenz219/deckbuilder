@@ -18,16 +18,14 @@ function AppRouter () {
   }, [])
 
   const onDeckChange = (deck) => {
-    console.log('TRAVIS LOOK HERE')
     localStorage.setItem('deck', JSON.stringify(deck))
-
     setDeck(deck)
   }
 
   return (
     <Router>
-      <Route path="/" exact render={() => <CardList deck={deck} setDeck={onDeckChange} />} />
-      <Route path="/deck" render={() => <DeckList deck={deck} setDeck={onDeckChange} />} />
+      <Route path="/deckbuilder/" exact render={() => <CardList deck={deck} setDeck={onDeckChange} />} />
+      <Route path="/deckbuilder/deck" render={() => <DeckList deck={deck} setDeck={onDeckChange} />} />
     </Router>
   )
 }
