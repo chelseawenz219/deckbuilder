@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/deckbuilder/static/css/main.30f73bd1.chunk.css",
-    "main.js": "/deckbuilder/static/js/main.2dcfb96f.chunk.js",
-    "main.js.map": "/deckbuilder/static/js/main.2dcfb96f.chunk.js.map",
+    "main.js": "/deckbuilder/static/js/main.00f3e98a.chunk.js",
+    "main.js.map": "/deckbuilder/static/js/main.00f3e98a.chunk.js.map",
     "runtime-main.js": "/deckbuilder/static/js/runtime-main.a5f31158.js",
     "runtime-main.js.map": "/deckbuilder/static/js/runtime-main.a5f31158.js.map",
     "static/js/2.e4e9a9d0.chunk.js": "/deckbuilder/static/js/2.e4e9a9d0.chunk.js",
     "static/js/2.e4e9a9d0.chunk.js.map": "/deckbuilder/static/js/2.e4e9a9d0.chunk.js.map",
     "index.html": "/deckbuilder/index.html",
-    "precache-manifest.7798588d94874fcd2437448035c210f4.js": "/deckbuilder/precache-manifest.7798588d94874fcd2437448035c210f4.js",
+    "precache-manifest.48c65ffcbdeddc8141a92a0f792f08ac.js": "/deckbuilder/precache-manifest.48c65ffcbdeddc8141a92a0f792f08ac.js",
     "service-worker.js": "/deckbuilder/service-worker.js",
     "static/css/main.30f73bd1.chunk.css.map": "/deckbuilder/static/css/main.30f73bd1.chunk.css.map",
     "static/js/2.e4e9a9d0.chunk.js.LICENSE.txt": "/deckbuilder/static/js/2.e4e9a9d0.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a5f31158.js",
     "static/js/2.e4e9a9d0.chunk.js",
     "static/css/main.30f73bd1.chunk.css",
-    "static/js/main.2dcfb96f.chunk.js"
+    "static/js/main.00f3e98a.chunk.js"
   ]
 }
